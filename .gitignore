@@ -36,7 +36,3 @@ out/
 ### VS Code ###
 .vscode/
 .DS_Store
-application-real.properties
-application-oauth-real.properties
-src/main/java/com/starters/dodu/secure/DBSecureTest.java
-src/main/resources/data
