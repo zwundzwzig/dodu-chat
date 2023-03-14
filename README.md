@@ -10,12 +10,14 @@
   </p>
 
 ### 1. 기술스택
+
 - View: `Thymeleaf`, `JavaScript`
 - Server: `Java`, `Spring boot`, `Oauth2`, `Jpa`
 - DataBase: `MariaDB`
 - Other: `Figma`, `Notion`, `Slack`
 
 ### 2. 구현
+
 - fetch 모듈 활용한 동적 페이지
 - 외부 API 로그인 (Naver, Google)
 - 회원 가입, 매칭 신청 및 확정 CRUD
@@ -24,4 +26,5 @@
 - 채팅 기능 (ChatGPT 활용)
 
 ### 3. 서비스 사이클
+
 ![Slide 16_9 - 29](https://velog.velcdn.com/images/amoeba25/post/d3726376-067b-40e1-98ab-bddce9cdd5b0/image.png)

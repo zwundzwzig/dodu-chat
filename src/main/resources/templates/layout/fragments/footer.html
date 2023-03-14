@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="footer">
+  <footer style="padding: 5px 5px 10px 5px;">
+    <div class="container">
+    <hr>
+      <div class="btn-group" role="group" aria-label="Basic outlined example">
+        <button type="button" style="font-size: 3px; color: gray; width: 82px" class="btn btn-outline-light font" onClick="location.href='/'">Home</button>
+        <button th:if="${session.user}" type="button" style="font-size: 3px; color: gray; width: 82px" class="btn btn-outline-light font" th:onclick="|location.href='/mentee/applyList/${session.user.id}'|">나의 멘토링</button>
+        <button th:unless="${session.user}" type="button" style="font-size: 3px; color: gray; width: 82px" class="btn btn-outline-light font" onclick="checkLogin()">나의 멘토링</button>
+        <button th:if="${session.user}" type="button" style="font-size: 3px; color: gray; width: 82px" class="btn btn-outline-light font" onclick="location.href='/chatList'">ChatLog</button>
+        <button th:unless="${session.user}" type="button" style="font-size: 3px; color: gray; width: 82px" class="btn btn-outline-light font" onclick="checkLogin()">ChatLog</button>
+        <button th:if="${session.user}" type="button" style="font-size: 3px; color: gray; width: 82px" class="btn btn-outline-light font" onclick="location.href='/doduLogout'">로그아웃</button>
+        <button th:unless="${session.user}" type="button" style="font-size: 3px; color: gray; width: 82px" class="btn btn-outline-light font" onclick="location.href='/doduLogin'">로그인</button>
+      </div>
+    </div>
+  </footer>
+</th:block>
+
+
+</html>

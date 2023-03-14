@@ -1,0 +1,42 @@
+jasypt:
+  encryptor:
+    bean: jasyptEncryptor
+
+server:
+  url: http://localhost:8080/
+
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: ENC(S7FwZlAjPGdNkgPITsRulpa+k/nkHPw/G8r9rUHvgAsPcYcrfKDCBbVe2rDqCwEBX61Sea8I69LvJboGL/kUT/O02LdcW3r6dCJlvNmThGXJgT45HA+HZQ==)
+    username: ENC(/J8kOtFBEiR92Bz8yvzfqg==)
+    password: ENC(/4l1+Cw+3MuQFyDyYng2nT7zLSYilzvM)
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+  mail:
+    host: ENC(fXDUoWIkNAemV04mpgUIzRcTfSz8FIXh)
+    port: 587
+    username: ENC(GIfsb+i5M9ntv/RMYrlIRE8fnuQEJChBrGNdd0hDzp79z8g/Ada68Q==)
+    password: ENC(S4ifVBD2IdFR4JXbWjkAPO4azAltZTu/AxZZ1tmhvSk=)
+    properties:
+      mail:
+        debug: true
+        smtp:
+          starttls:
+            enable: true
+          auth: true
+  thymeleaf:
+    cache: false
+  profiles:
+    include: oauth
+
+chatgpt:
+  api:
+    key: ENC(KcVvFK2uyIk16pG8lbN0YFx5B1jmiSwamLGsb9I/PMb5ACl8eSjI9hqksN6rrbFZQlz1zHGUj5BxaNig6qoR2Q==)
+
+#chatgpt.api.key.script=ENC(4mn+PBzzdtV9yYmvS0bCQb/A0C0uTiBrndX35WcV0qkWVihn8nmx2jXxgMwsvWhv1X9WIHZcgoEsXmlXydFXFw==)
