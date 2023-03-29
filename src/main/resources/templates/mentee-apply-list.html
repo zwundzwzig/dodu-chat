@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"
+                xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+                layout:decorate="~{layout/phonelay}">
+
+<th:block layout:fragment="content">
+    <div class="d-flex justify-content-start" style="">
+        <div class="p-2 font" style="font-size: 8px; margin: 3px "> <b th:text="${mentee.getNickname()}" />님 제안한 멘토링</div>
+    </div>
+
+    <div style="margin: auto; text-align: center;">
+        <!-- list 1명 -->
+        <div style="margin: 2px;" th:each="apply : ${applyList}" th:if="${apply.getStatus()} == 0">
+            <input type="button" class="btn-check" name="options3" id="mento1" th:onclick="|location.href='/mentee/applyResult?menteeId=${mentee.id}&mentorId=${apply.mentor.id}'|" />
+            <label class="btn btn-secondary font" style="width: 310px;" for="mento1">
+                <img th:src="${apply.getMentor().getImage()}" class="rounded float-start prodo2" alt="..." style="width: 40px; height: 40px; margin: 5px 0px 0px 0px" />
+                <p class="font" style="display:inline; margin-left: -70px; margin-right: 5px; font-size: 20px;" th:text="${apply.getMentor().getNickname()}"></p>
+                <p class="font" style="display:inline; font-size: 10px" th:text="${apply.getMentor().getUniversity()}"></p>
+                <p class="font" style="display:inline; font-size: 10px" th:text="${apply.getMentor().getMajor()}"></p>
+                <p class="font" style="font-size: 12px; margin-bottom:0; color: black;">멘토링 신청 대기 중</p>
+                <p class="font" style="font-size: 2px; margin: 0; text-align: right" th:text="${apply.getQuestion()}"></p>
+            </label>
+        </div>
+    </div>
+
+
+    <div class="d-flex justify-content-start" style="">
+        <div class="p-2 font" style="font-size: 8px; margin: 3px "> <b style="color: rgba(216,90,123,0.5)">멘토</b>와 매칭된 멘토링</div>
+    </div>
+
+    <div style="margin: auto; text-align: center;">
+        <!-- 매칭 1명 -->
+        <div style="margin: 2px;" th:each="m : ${match}">
+            <input type="button" class="btn-check" name="options3" id="match1" />
+            <label class="btn btn-secondary font" style="width: 310px;border-color: rgba(216,90,123,1)!important; background-color: rgba(216,90,123,1)!important;" th:onclick="|location.href='/chat/${m.getId()}'|">
+                <img th:src="${m.apply.mentor.image}" class="rounded float-start prodo2" alt="..." style="width: 40px; height: 40px; margin: 5px 0px 0px 0px" />
+                <p class="font" style="display:inline; margin-left: -70px; margin-right: 5px; font-size: 20px;" th:text="${m.getApply().getMentor().getNickname()}"></p>
+                <p class="font" style="display:inline; font-size: 10px" th:text="${m.apply.getMentor().getUniversity()}"></p>
+                <p class="font" style="display:inline; font-size: 10px" th:text="${m.apply.getMentor().getMajor()}"></p>
+                <p class="font" style="font-size: 12px; margin-bottom:0; color: darkgreen;" th:text="|${m.getSelectedMatchTime().substring(5, 7)}월 ${m.getSelectedMatchTime().substring(8, 10)}일 ${m.getSelectedMatchTime().substring(11, 13)}시에 만나요!|"> </p>
+                <p class="font" style="font-size: 2px; margin: 0; text-align: right" th:text="|선택한 질문 : ${m.apply.question.question}|" ></p>
+            </label>
+        </div>
+    </div>
+
+</th:block>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+       layout:decorate="~{layout/phonelayNotnav}">
+
+<head>
+  <style>
+    body{
+      background:white;
+    }
+
+    h1{
+      color: rgba(216,90,123,0.5);
+      font-size:48px;
+      letter-spacing:-3px;
+      text-align:center;
+      margin: 90px 0 30px 0 ;
+      transition:.2s linear;
+    }
+
+    form, .sign_up {
+      text-align: center;
+      margin: auto;
+      border: 0px solid;
+      background-color: white;
+    }
+
+    td{
+      padding: 30px;
+    }
+    .separator{
+      text-align: center;
+    }
+
+    .sign_in{
+      background-color: white;
+      border: 0px;
+      margin: 4px auto;
+    }
+
+    .sign_in_btn{
+      width: 170px;
+    }
+
+    .sign_up_img{
+      width: 50px;
+    }
+
+
+
+  </style>
+</head>
+<th:block layout:fragment="content">
+  <nav class="navbar navbar-light bg-light" style="position: relative; padding: 0px; height: 40px; background-color: transparent;">
+    <div class="container-fluid" style="height: 26px;">
+      <button class="navbar-toggler" type="button" style="padding: 0px; margin: 0px; width: 30px; height: 25px;" onClick="location.href='/'">
+        <span class="font" style="width: 15px;height: 15px; " > < </span>
+      </button>
+      <p class="navbar-brand font" style="font-size:17px; padding: 0px; margin: 0px auto;" href="#">DoDu</p>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Heading -->
+    <h1 class="font">SIGN IN</h1>
+
+    <!-- Form -->
+      <div class="row ">
+        <button class="sign_in" ><a href="/oauth2/authorization/google"><img class="sign_in_btn" src="images/btn_google_signin.png"></a></button>
+        <button class="sign_in" ><a href="/oauth2/authorization/naver"><img  class="sign_in_btn" src="images/btnN_signin.png"></a></button>
+      </div>
+    <br />
+    <hr />
+
+    <!-- separator -->
+    <div class="separator" style="text-align: left; font-size: 16px; padding-left: 20px;">
+      <p class="font">SIGN UP </p>
+    </div>
+
+    <div class="separator">
+      <p class="font">Mentee</p>
+    </div>
+
+    <!-- SING_UP button -->
+    <table class="sign_up" style="margin-top: -15px">
+      <tr> 
+        <td><button class="sign_up"><img class="sign_up_img" src="images/g-logo.png"></button></td>
+        <td><button class="sign_up"><img class="sign_up_img" src="images/btnN.png"></button></td>
+      </tr>
+    </table>
+
+    <div class="separator">
+      <p class="font" style="margin-bottom: 0px">Mentor</p>
+    </div>
+
+    <!-- SING_UP button -->
+    <table class="sign_up" style="margin-top: -15px">
+      <tr>
+        <td><button class="sign_up" style="background-color: rgba(216,90,123,0.5); font-size: 15px">회원가입</button></td>
+      </tr>
+    </table>
+
+  </div>
+
+
+
+
+
+
+</th:block>
+</html>

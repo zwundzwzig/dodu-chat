@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"
+                xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+                layout:decorate="~{layout/phonelay}">
+
+<th:block layout:fragment="content">
+
+    <header class="" style="background-color: rgba(216,90,123,0.5); width: 375px; height: 100px; padding: 10px ">
+        <div class="container">
+            <div class="" style="display:inline; margin-top: 0px;">
+                <img th:src="${apply.mentor.image}" class="rounded float-start prodo2" alt="..." style="width: 50px; height: 50px; margin: 12px 0px 0px 0px" />
+                <p class="font" style="display:inline; margin-left: 20px; margin-right: 5px; font-size: 20px;" th:text="${apply.mentor.nickname}" />
+                <p class="font" style="display:inline; font-size: 10px" th:text="${apply.mentor.university}" />
+                <p class="font" style="display:inline; font-size: 10px" th:text="${apply.mentor.major}" />
+                <hr style="margin: 0px 0px 4px 72px; width: 200px;" >
+                <p class="font" style="display: inline; margin-left: 20px; font-size: 13px; margin-bottom: 0px;" th:text="|${apply.category}에 대해 물어보세요!|" />
+            </div>
+        </div>
+    </header>
+
+
+    <div class="d-flex justify-content-start">
+        <div class="p-2 font" style="font-size: 8px; margin: 3px "> <b th:text="${apply.mentee.nickname}"/>님 신청한 멘토링 시간</div>
+    </div>
+    <div class="" style="margin: 0px auto; text-align: center;">
+        <table style="text-align: center;  margin: auto; ">
+            <tr>
+                <td style="padding: 15px">
+                    <div class="col">
+                        <div class="card h-100">
+                            <div class="card-body" style="padding: 0px;">
+                                <div class="text-center">
+                                    <p class="font" style="font-size: 10px; margin-bottom:0; padding: 8px;  " th:text="|${apply.getMatchTime1().substring(5, 7)}월 ${apply.getMatchTime1().substring(8, 10)}일 ${apply.getMatchTime1().substring(11, 13)}시|" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td style="padding: 15px">
+                    <div class="col">
+                        <div class="card h-100">
+                            <div class="card-body" style="padding: 0px;">
+                                <div class="text-center">
+                                    <p class="font" style="font-size: 10px; margin-bottom:0; padding: 8px;" th:text="|${apply.getMatchTime2().substring(5, 7)}월 ${apply.getMatchTime2().substring(8, 10)}일 ${apply.getMatchTime2().substring(11, 13)}시|" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td style="padding: 15px">
+                    <div class="col">
+                        <div class="card h-100">
+                            <div class="card-body" style="padding: 0px;">
+                                <div class="text-center">
+                                    <p class="font" style="font-size: 10px; margin-bottom:0; padding: 8px;" th:text="|${apply.getMatchTime3().substring(5, 7)}월 ${apply.getMatchTime3().substring(8, 10)}일 ${apply.getMatchTime3().substring(11, 13)}시|" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <hr style="width: 350px; margin: 0px auto;">
+
+    <div class="d-flex justify-content-start">
+        <div class="p-2 font" style="font-size: 8px; margin: 3px "> <b th:text="${apply.mentee.nickname}"/>님이 선택한 질문</div>
+    </div>
+    <div class="" style="margin: 0px auto; text-align: center;">
+        <table style="text-align: center;  margin: auto; margin-bottom: 15px;">
+            <tr>
+                <td style="padding: 0px">
+                    <div class="col">
+                        <input type="radio" class="btn-check" name="options1" id="option4" />
+                        <label class="btn btn-secondary font" style="font-size: 20px" for="option4" th:text="${apply.question}"></label>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <hr style="width: 350px; margin: 0px auto;">
+
+    <div class="d-flex justify-content-start">
+        <div class="p-2 font" style="font-size: 8px; margin: 3px; "> <b th:text="${apply.mentee.nickname}"/>님이 사용한 <p style="color: rgba(216,90,123,1); margin-bottom: 0px;">DODU</p></div>
+    </div>
+    <div class="" style="margin: 10px auto; text-align: center;">
+        <div class="font" style="font-size: 20px;">$<b style="color: rgba(216,90,123,1)">3500</b> DoDu</div>
+    </div>
+
+
+</th:block>
+
+
+</html>

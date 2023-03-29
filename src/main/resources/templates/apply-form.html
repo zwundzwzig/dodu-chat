@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+       layout:decorate="~{layout/phonelayNotnav}">
+<head>
+    <script src="/js/Apply.js"></script>
+</head>
+
+<th:block layout:fragment="content">
+    <nav class="navbar navbar-light bg-light" style="position: relative; padding: 0px; height: 40px; background-color: transparent;">
+        <div class="container-fluid" style="height: 26px;">
+            <button class="navbar-toggler" type="button" style="padding: 0px; margin: 0px; width: 30px; height: 25px;" onClick="location.href='/'">
+                <span class="font" style="width: 15px;height: 15px; " > < </span>
+            </button>
+            <p class="navbar-brand font"  style="font-size:17px; padding: 0px; margin: 0px;" href="#">DoDu</p>
+            <button class="navbar-toggler" style="padding: 0px; margin: 0px; width: 30px; height: 25px;" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon" style="width: 15px;height: 15px;"></span>
+            </button>
+            <div class="offcanvas"  style="position: absolute; top: 0px; left: 225px; right: 0px;   max-height: 667px; width: 150px; height: 667px;" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <p class="font"  style="font-size: 8px" id="offcanvasNavbarLabel">프로필 신고하기</p>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end">
+                        <ul class="navbar-nav justify-content-end">
+                            <li class="nav-item">
+                                <a class="nav-link active font" style="font-size: 3px; color: black;" aria-current="page" href="#">프로필<br>신고하기</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active font" style="font-size: 3px;color: black;" aria-current="page" href="#">프로필<br>작성자<br>신고하기</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active font" style="font-size: 3px;color: black;" aria-current="page" href="#">멘토<br>안보이게하기</a>
+                            </li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <header class="" style="background-color: rgba(216,90,123,0.5); width: 375px; height: 100px; padding: 10px ">
+        <div class="container">
+            <div class="" style="display:inline; margin-top: 0px;">
+                <img th:src="${mentorData.image}" class="rounded float-start prodo2" alt="..." style="width: 50px; height: 50px; margin: 12px 0px 0px 0px" />
+                <p class="font" style="display:inline; margin-left: 20px; margin-right: 5px; font-size: 20px;">[[${mentorData.nickname}]]</p>
+                <p class="font" style="display:inline; font-size: 10px">[[${mentorData.university}]] [[${mentorData.major}]]</p>
+                <hr style="margin: 0px 0px 4px 72px; width: 145px;" >
+                <p class="font" style="display: inline; margin-left: 20px; font-size: 13px; margin-bottom: 0px;">[[${mentorData.university}]]의 모든 것을 알려드리겠습니다.</p>
+            </div>
+        </div>
+    </header>
+    <div th:if="${session.isEmpty()}">
+        <br /><br /><br />
+        <div class="alert alert-danger">회원가입부터 해주세요!</div>
+        <button type="button" style="font-size: 3px; color: gray; width: 82px" class="alert alert-danger" onclick="location.href='/doduLogin'">로그인</button>
+    </div>
+    <form th:action="@{/api/v1/offer/saveApply}" method="POST" th:if="${session.user}" id="save-apply">
+        <!-- Section-->
+        <section class="py-1">
+            <div class="d-flex justify-content-start">
+                <div class="p-2 font" style="font-size: 8px; margin: 3px; "> <b th:text="${session.user?.name}" />님 사전질문 중 1개를 선택해 주세요!</div>
+            </div>
+            <select id="question" name="question" required>
+                <option value="" selected>궁금한 질문을 골라주세요</option>
+                <!-- 이 경우 json의 형태이므로, get메서드를 이용하지 않고 바로 가져올 수 있다-->
+                <option
+                        th:each="question : ${mentorData.questions}"
+                        th:value="${question.id}"
+                        th:text="${question.question}"
+                ></option>
+            </select>
+            <div class="d-flex justify-content-start">
+                <div class="p-2 font" style="font-size: 8px; margin: 3px "><b th:text="${session.user?.name}" />님 가능한 시간을 알려주세요.</div>
+            </div>
+            <div class="" style="margin: -10px 0px 0px 30px">
+                <table style="text-align: center">
+                    <tr>
+                        <td style="padding: 15px">
+                            <div class="col">
+                                <div class="card h-100">
+                                    <div class="card-body" style="padding: 0px;">
+                                        <div class="text-center">
+    <!--                                        <p class="font" style="font-size: 3px; margin-bottom:0;  ">3월 3일 10시</p>-->
+                                        </div>
+                                    </div>
+                                    <div class="card-footer" style="padding: 0px;">
+                                        <div class="text-center">
+                                            <label class="btn btn-secondary font" style="font-size: 3px; padding : 6px 0px 0px 0px " for="op1">희망시간1<input type="datetime-local" name="matchTime1" id="op1" required /></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <tr>
+                        </tr>
+                        <td style="padding: 15px">
+                            <div class="col">
+                                <div class="card h-100">
+                                    <div class="card-body" style="padding: 0px;">
+                                        <div class="text-center">
+    <!--                                        <p class="font" style="font-size: 3px; margin-bottom:0;  ">3월 4일 10시</p>-->
+                                        </div>
+                                    </div>
+                                    <div class="card-footer" style="padding: 0px;">
+                                        <div class="text-center">
+                                            <label class="btn btn-secondary font" style="font-size: 3px; padding : 6px 0px 0px 0px" for="op2">희망시간2<input type="datetime-local" name="matchTime2" id="op2" required /></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <tr>
+                        </tr>
+                        <td style="padding: 15px">
+                            <div class="col">
+                                <div class="card h-100">
+                                    <div class="card-body" style="padding: 0px;">
+                                        <div class="text-center">
+                                           <!-- <p class="font" style="font-size: 3px; margin-bottom:0;  ">3월 5일 10시</p>-->
+                                        </div>
+                                    </div>
+                                    <div class="card-footer" style="padding: 0px;">
+                                        <div class="text-center">
+                                            <label class="btn btn-secondary font" style="font-size: 3px; padding : 6px 0px 0px 0px" for="op3">희망시간3<input type="datetime-local" name="matchTime3" id="op3" required /></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <hr>
+            <div class="">
+                <div class="d-flex justify-content-start">
+                    <div class="p-2 font" style="font-size: 20px; margin: 3px "><b>[[${mentorData.getNickname()}]]</b> 멘토에게<br> 도두를 제안하시겠습니까? </div>
+                </div>
+                <div class="font" style="font-size: 20px; text-align: right; margin-right: 20px; "><b style="color: rgba(216,90,123,1)">3500</b> DoDu</div>
+            </div>
+            <div style="margin-top: 20px; text-align: center;">
+                <input type="hidden" name="status" th:value=0 />
+                <input type="hidden" name="mentee" th:value="${session?.user?.id}" />
+                <input type="hidden" name="mentor" th:value="${mentorData.getId()}" />
+                <button th:if="${session.user}" class="btn" style="background-color: rgba(216,90,123,0.5); margin: 5px;" type="submit" onclick="checkDuplicates(event)">제안하기</button>
+                <button th:unless="${session.user}" class="btn" style="background-color: rgba(216,90,123,0.5); margin: 5px;" disabled="disabled">제안하기</button>
+                <input class="btn btn-secondary" style="margin: 5px;" type="reset" value="취소하기" onclick="location.href='/'" />
+            </div>
+        </section>
+        <!--추후 value에 session 값을 담아 실제 mentee_id를 저장해야 함-->
+    </form>
+    <script>
+        const checkDuplicates = (event) => {
+            event.preventDefault();
+            const op1 = document.getElementById('op1').value;
+            const op2 = document.getElementById('op2').value;
+            const op3 = document.getElementById('op3').value;
+
+            if (!(new Date(op1) > new Date()) || !(new Date(op2)> new Date()) || !(new Date(op3)> new Date())) {
+                alert('과거의 날짜는 신청할 수 없어요!!');
+                return;
+            }
+
+            const uniqueValues = new Set([op1, op2, op3]);
+
+            if (uniqueValues.size !== 3) {
+                alert('각각 다른 날짜로 신청해 주세요!');
+                return;
+            }
+
+            event.target.form.submit();
+        }
+
+        const params = new URLSearchParams(window.location.search);
+        const isAlert = params.get('alert');
+
+        if (isAlert === 'true') {
+            const message = decodeURIComponent(params.get('message'));
+            if (confirm(message)) history.back();
+        }
+    </script>
+</th:block>
+</html>

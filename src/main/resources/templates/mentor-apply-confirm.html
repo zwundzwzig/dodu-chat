@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/phonelayNotnav}">
+
+<head>
+    <script src="/js/Apply.js"></script>
+</head>
+
+
+<th:block layout:fragment="content">
+    <nav class="navbar navbar-light bg-light" style="position: relative; padding: 0px; height: 40px; background-color: transparent;">
+        <div class="container-fluid" style="height: 26px;">
+            <button class="navbar-toggler" type="button" style="padding: 0px; margin: 0px; width: 30px; height: 25px;" onclick="location.href='/'">
+                <span class="font" style="width: 15px;height: 15px; " > < </span>
+            </button>
+            <p class="navbar-brand font"  style="font-size:17px; padding: 0px; margin: 0px;" href="#">DoDu</p>
+
+            <button class="navbar-toggler" style="padding: 0px; margin: 0px; width: 30px; height: 25px;" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon" style="width: 15px;height: 15px;"></span>
+            </button>
+            <div class="offcanvas"  style="position: absolute; top: 0px; left: 225px; right: 0px;   max-height: 667px; width: 150px; height: 667px;" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <p class="font"  style="font-size: 8px" id="offcanvasNavbarLabel">프로필 신고하기</p>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end">
+                        <li class="nav-item">
+                    <ul class="navbar-nav justify-content-end">
+                        <li class="nav-item">
+                            <a class="nav-link active font" style="font-size: 3px; color: black;" aria-current="page" href="#">프로필<br>신고하기</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active font" style="font-size: 3px;color: black;" aria-current="page" href="#">프로필<br>작성자<br>신고하기</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active font" style="font-size: 3px;color: black;" aria-current="page" href="#">멘토<br>안보이게하기</a>
+                        </li>
+                    </ul>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="" style="background-color: rgba(216,90,123,0.5); width: 375px; height: 100px; padding: 10px ">
+        <div class="container">
+            <div class="" style="display:inline; margin-top: 0px;">
+                <img th:src="${apply.mentor.image}" class="rounded float-start prodo2" alt="..." style="width: 50px; height: 50px; margin: 12px 0px 0px 0px" />
+                <p class="font" style="display:inline; margin-left: 20px; margin-right: 5px; font-size: 20px;" th:text="|${apply.mentor.nickname} 멘토님|" />
+                <p class="font" style="display:inline; font-size: 10px"> 안녕하세요!</p>
+                <hr style="margin: 0px 0px 4px 72px; width: 145px;" >
+                <p class="font" style="display: inline; margin-left: 20px; font-size: 13px; margin-bottom: 0px;" th:text="|${apply.mentee.nickname} 멘티의 dodu 제안서입니다.|" />
+            </div>
+        </div>
+    </header>
+
+    <form th:action="@{/api/v1/saveMatching}" method="POST" >
+        <!-- Section-->
+        <section class="py-1">
+            <div class="d-flex justify-content-start">
+                <div class="p-2 font" style="font-size: 15px; margin: 0px auto; text-align: center;"><b>날짜 및 시간을 확정해 주세요!~</b></div>
+            </div>
+            <div class="" style="margin: 0px auto; text-align: center;">
+                <table style="text-align: center;  margin: auto; ">
+                    <tr>
+                        <td style="padding: 15px">
+                            <div class="col">
+                                <div class="card h-100">
+                                    <div class="card-body" style="padding: 0px;">
+                                        <div class="text-center">
+                                            <input type="radio" class="btn-check" name="selectedMatchTime" id="option1" th:value="${apply.matchTime1}" />
+                                            <label
+                                                    class="btn btn-secondary font"
+                                                    style="font-size: 10px; margin-bottom:0; padding: 8px;"
+                                                    for="option1"
+                                                    th:text="|${apply.getMatchTime1().substring(5, 7)}월 ${apply.getMatchTime1().substring(8, 10)}일 ${apply.getMatchTime1().substring(11, 13)}시|"
+                                            ></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td style="padding: 15px">
+                            <div class="col">
+                                <div class="card h-100">
+                                    <div class="card-body" style="padding: 0px;">
+                                        <div class="text-center">
+                                            <input type="radio" class="btn-check" name="selectedMatchTime" id="option2" th:value="${apply.matchTime2}" />
+                                            <label
+                                                    class="btn btn-secondary font"
+                                                    style="font-size: 10px; margin-bottom:0; padding: 8px;"
+                                                    for="option2"
+                                                    th:text="|${apply.getMatchTime2().substring(5, 7)}월 ${apply.getMatchTime2().substring(8, 10)}일 ${apply.getMatchTime2().substring(11, 13)}시|"
+                                            ></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td style="padding: 15px">
+                            <div class="col">
+                                <div class="card h-100">
+                                    <div class="card-body" style="padding: 0px;">
+                                        <div class="text-center">
+                                            <input type="radio" class="btn-check" name="selectedMatchTime" id="option3" th:value="${apply.matchTime3}" />
+                                            <label
+                                                    class="btn btn-secondary font"
+                                                    style="font-size: 10px; margin-bottom:0; padding: 8px;"
+                                                    for="option3"
+                                                    th:text="|${apply.getMatchTime3().substring(5, 7)}월 ${apply.getMatchTime3().substring(8, 10)}일 ${apply.getMatchTime3().substring(11, 13)}시|"
+                                            ></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="d-flex justify-content-start">
+                <div class="p-2 font" style="font-size: 8px; margin: 3px "> <b th:text="${apply.mentee.nickname}"/>님이 선택한 질문</div>
+            </div>
+            <div class="" style="margin: 0px auto; text-align: center;">
+                <table style="text-align: center;  margin: auto; margin-bottom: 15px;">
+                    <tr>
+                        <td style="padding: 0px">
+                            <div class="col">
+                                <p class="btn btn-secondary font" style="font-size: 20px" for="option4" th:text="${apply.question}" />
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <hr>
+            <div class="">
+                <div class="d-flex justify-content-start">
+                    <div class="p-2 font" style="font-size: 20px; margin: 3px "><b th:text="${apply.mentee.nickname}"></b> 멘티의<br> 도두를 수락하시겠습니까? </div>
+                </div>
+                <div class="font" style="font-size: 20px; text-align: right; margin-right: 20px; ">받은 <b style="color: rgba(216,90,123,1)">3500</b> DoDu</div>
+            </div>
+            <div style="margin-top: 20px; text-align: center;">
+                <input type="hidden" name="status" th:value='0' />
+                <input type="hidden" name="apply" id="apply" th:value="${apply.id}" />
+                <button class="btn" style="background-color: rgba(216,90,123,0.5); margin: 5px;" type="submit"  th:text="수락하기"></button>
+                <input class="btn btn-secondary" style="margin: 5px;" type="reset" value="취소하기" onclick="location.href='/'">
+            </div>
+        </section>
+    </form>
+    <script></script>
+</th:block>
+</html>
