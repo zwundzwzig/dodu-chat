@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"
+                xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+                layout:decorate="~{layout/adminlay}">
+<head>
+    <style>
+        .dodu-btn{
+            background-color: rgba(216,90,123,0.5);
+            color : white;
+
+        }
+        .dodu-btn:hover{
+            background-color: white;
+            color : rgba(216,90,123,0.5);
+            border-color: rgba(216,90,123,0.5);
+        }
+        .font{
+            font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+        }
+        .form-floating{
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<th:block layout:fragment="content">
+    <h2 style="text-align: center; margin-top: 5%"> 관리자 페이지에 접속하려면 로그인을 해주세요</h2>
+    <div id="adminForm" class="w-50 font" style="margin-left: 25%; margin-top: 5%;">
+        <form class="" action="/admin/login" method="post">
+            <div class="form-floating w-100">
+                <input type="text" class="form-control" id="floatingInput" placeholder="Admin Id" name="adminName">
+                <label for="floatingInput">Admin Id</label>
+            </div>
+            <div class="form-floating w-100">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+                <label for="floatingPassword">Password</label>
+            </div>
+            <button class="w-50 btn btn-lg dodu-btn" type="submit">Sign in</button><button type="button" id="signUpBtn" onclick="signUp()" class="w-50 btn btn-lg dodu-btn">Sign up</button>
+        </form>
+    </div>
+
+<script>
+        function signUp(){
+            alert("관리자에게 문의하세요!");
+        }
+</script>
+</th:block>
+
+</html>

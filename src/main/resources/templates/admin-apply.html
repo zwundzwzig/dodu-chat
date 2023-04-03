@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+       layout:decorate="~{layout/adminlay}">
+
+<style>
+
+
+</style>
+
+<th:block layout:fragment="content">
+
+    <h2>신청 관리</h2>
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead class="th">
+            <div class="sortBtns">
+                <button onclick="location.href='/admin/apply?sortBy=id'">번호순</button><button onclick="location.href='/admin/apply?sortBy=menteeName'">멘티이름순</button><button onclick="location.href='/admin/apply?sortBy=mentorName'">멘토이름순</button><button onclick="location.href='/admin/apply?sortBy=applyStatus'">수락여부순</button>
+            </div>
+            <tr>
+                <th scope="col">신청서 번호</th>
+                <th scope="col">신청 일자</th>
+                <th scope="col">멘티</th>
+                <th scope="col">멘토</th>
+                <th scope="col">희망시간1</th>
+                <th scope="col">희망시간2</th>
+                <th scope="col">희망시간3</th>
+                <th scope="col">선택된 질문</th>
+                <th scope="col">수락 여부</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="a : ${applylist}" th:orderBy="${a.getId()}">
+                <td th:text="${a.getId()}"></td>
+                <td th:text="|${(a.getIndate()?.getYear() div 10) mod 10}${a.getIndate()?.getYear() mod 10}년 ${a.getIndate().getMonthValue()}월 ${a.getIndate().getDayOfMonth()}일|"></td>
+                <td th:text="${a.getMentee().getNickname()}"></td>
+                <td th:text="${a.getMentor().getNickname()}"></td>
+                <td th:text="|${a.getMatchTime1().substring(2, 4)}년 ${a.getMatchTime1().substring(5, 7)}월 ${a.getMatchTime1().substring(8, 10)}일 ${a.getMatchTime1().substring(11, 13)}시 ${a.getMatchTime1().substring(14, 15)}분|"></td>
+                <td th:text="|${a.getMatchTime2().substring(2, 4)}년 ${a.getMatchTime2().substring(5, 7)}월 ${a.getMatchTime2().substring(8, 10)}일 ${a.getMatchTime2().substring(11, 13)}시 ${a.getMatchTime2().substring(14, 15)}분|"></td>
+                <td th:text="|${a.getMatchTime3().substring(2, 4)}년 ${a.getMatchTime3().substring(5, 7)}월 ${a.getMatchTime3().substring(8, 10)}일 ${a.getMatchTime3().substring(11, 13)}시 ${a.getMatchTime3().substring(14, 15)}분|"></td>
+                <td th:text="${a.getQuestion().getQuestion()}"></td>
+                <td th:text="${a.statusEnum.getStatus()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</th:block>
+
+
+</html>

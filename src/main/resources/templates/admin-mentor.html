@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+       layout:decorate="~{layout/adminlay}">
+<head>
+    <style>
+
+    </style>
+</head>
+
+<th:block layout:fragment="content">
+
+    <h2>멘토 관리</h2>
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+            <div class="sortBtns">
+                <button onclick="location.href='/admin/mentor?sortBy=id'">번호순</button><button onclick="location.href='/admin/mentor?sortBy=name'">이름순</button><button onclick="location.href='/admin/mentor?sortBy=university'">대학순</button><button onclick="location.href='/admin/mentor?sortBy=major'">전공순</button><button onclick="location.href='/admin/mentor?sortBy=gender'">성별순</button>
+            </div>
+            <tr>
+                <th scope="col">회원번호</th>
+                <th scope="col">이름</th>
+                <th scope="col">대학</th>
+                <th scope="col">전공</th>
+                <th scope="col">나이</th>
+                <th scope="col">성별</th>
+                <th scope="col">전화번호</th>
+                <th scope="col">이메일</th>
+                <th scope="col">가입상태</th>
+                <th scope="col">가입일</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="m : ${mentors}" th:orderBy="${m.id}">
+                <td th:text="${m.getId()}"></td>
+                <td th:text="${m.getNickname()}"></td>
+                <td th:text="${m.getUniversity()}"></td>
+                <td th:text="${m.getMajor()}"></td>
+                <td th:text="${m.getAge()}"></td>
+                <td th:text="${m.getGender()}"></td>
+                <td th:text="${m.getPhone()}"></td>
+                <td th:text="${m.getEmail()}"></td>
+                <form th:action="@{/admin/mentor/update/{id}(id=${m.getId()})}" method="post">
+                    <td>
+                        <select th:name="status">
+                            <option>가입 여부</option>
+                            <option th:text="${m.statusEnum.VERIFICATIONSTEP.status}" th:value="${m.statusEnum.VERIFICATIONSTEP.statusCode}"></option>
+                            <option th:text="${m.statusEnum.REGCOMPLETE.status}" th:value="${m.statusEnum.REGCOMPLETE.statusCode}"></option>
+                            <option th:text="${m.statusEnum.BLOCK.status}" th:value="${m.statusEnum.BLOCK.statusCode}"></option>
+                        </select>
+                    </td>
+                    <td>
+                        <button type="submit">적용</button>
+                    </td>
+                </form>
+                <td th:text="${m.statusEnum.getStatus()}"></td>
+                <td th:text="|${(m.getIndate()?.getYear() div 10) mod 10}${m.getIndate()?.getYear() mod 10}년 ${m.getIndate()?.getMonthValue()}월 ${m.getIndate()?.getDayOfMonth()}일|"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</th:block>
+
+
+</html>

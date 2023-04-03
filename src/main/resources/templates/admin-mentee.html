@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"
+                xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+                layout:decorate="~{layout/adminlay}">
+
+<th:block layout:fragment="content">
+
+    <h2>멘티 관리</h2>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+            <div class="sortBtns">
+                <button onclick="location.href='/admin/mentee?sortBy=id'">번호순</button><button onclick="location.href='/admin/mentee?sortBy=name'">이름순</button><button onclick="location.href='/admin/mentee?sortBy=gender'">성별순</button>
+            </div>
+            <tr>
+                <th scope="col">회원번호</th>
+                <th scope="col">이름</th>
+                <th scope="col">전화번호</th>
+                <th scope="col">이메일</th>
+                <th scope="col">성별</th>
+                <th scope="col">주소</th>
+                <th scope="col">가입일</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="m : ${mentees}" th:orderBy="${m.id}">
+                <td th:text="${m.getId()}"></td>
+                <td th:text="${m.getNickname()}"></td>
+                <td th:text="${m.getPhone()}"></td>
+                <td th:text="${m.getEmail()}"></td>
+                <td th:text="${m.getGender()}"></td>
+                <td th:text="${m.getAddress()}"></td>
+                <td th:text="|${(m.getIndate()?.getYear() div 10) mod 10}${m.getIndate()?.getYear() mod 10}년 ${m.getIndate()?.getMonthValue()}월 ${m.getIndate()?.getDayOfMonth()}일|"></td>            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</th:block>
+
+
+</html>

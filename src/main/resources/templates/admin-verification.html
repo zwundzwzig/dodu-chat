@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+       layout:decorate="~{layout/adminlay}">
+<head>
+    <style>
+
+    </style>
+</head>
+
+<th:block layout:fragment="content">
+
+    <h2>검증 관리</h2>
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+            <div class="sortBtns">
+                <button onclick="location.href='/admin/veri?sortBy=id'">번호순</button><button onclick="location.href='/admin/veri?sortBy=name'">이름순</button><button onclick="location.href='/admin/veri?sortBy=submitDate'">제출일순</button><button onclick="location.href='/admin/veri?sortBy=veriStatus'">검증상태순</button>
+            </div>
+            <tr>
+                <th scope="col">회원번호</th>
+                <th scope="col">이름</th>
+                <th scope="col">전화번호</th>
+                <th scope="col">이메일</th>
+                <th scope="col">대학</th>
+                <th scope="col">전공</th>
+                <th scope="col">제출서류</th>
+                <th scope="col">제출일</th>
+                <th scope="col">검증 여부</th>
+                <th scope="col">적용</th>
+                <th scope="col">검증 상태</th>
+            </tr>
+            </thead>
+            <tbody >
+            <tr th:each="v : ${verification}" th:orderBy="${v.getMentor().getId()}">
+                <td th:text="${v.getMentor().getId()}"></td>
+                <td th:text="${v.getMentor().getNickname()}"></td>
+                <td th:text="${v.getMentor().getPhone()}"></td>
+                <td th:text="${v.getMentor().getEmail()}"></td>
+                <td th:text="${v.getMentor().getUniversity()}"></td>
+                <td th:text="${v.getMentor().getMajor()}"></td>
+                <td th:text="${v.getFile()}"></td>
+                <td th:text="|${(v.getIndate()?.getYear() div 10) mod 10}${v.getIndate()?.getYear() mod 10}년 ${v.getIndate()?.getMonthValue()}월 ${v.getIndate()?.getDayOfMonth()}일|"></td>
+                <form th:action="@{/admin/veri/update/{id}(id=${v.getMentor().getId()})}" method="post">
+                <td>
+                    <select th:name="status">
+                        <option>검증 여부</option>
+                        <option th:text="${v.statusEnum.UNDEFINED.status}" th:value="${v.statusEnum.UNDEFINED.statusCode}"></option>
+                        <option th:text="${v.statusEnum.VERIFYING.status}" th:value="${v.statusEnum.VERIFYING.statusCode}"></option>
+                        <option th:text="${v.statusEnum.SENDBACK.status}" th:value="${v.statusEnum.SENDBACK.statusCode}"></option>
+                        <option th:text="${v.statusEnum.PASSED.status}" th:value="${v.statusEnum.PASSED.statusCode}"></option>
+                    </select>
+                </td>
+                <td><button type="submit">적용</button></td>
+                </form>
+                <td th:text="${v.statusEnum.getStatus()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</th:block>
+
+
+</html>
