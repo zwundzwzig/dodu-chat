@@ -1,9 +1,9 @@
 package com.project.doduchat.service;
 
 import com.project.doduchat.config.ChatGptConfig;
-import com.project.doduchat.dto.ChatGptRequestDTO;
-import com.project.doduchat.dto.ChatGptResponseDTO;
-import com.project.doduchat.dto.QuestionRequestDTO;
+import com.project.doduchat.domain.dto.ChatGptRequestDTO;
+import com.project.doduchat.domain.dto.ChatGptResponseDTO;
+import com.project.doduchat.domain.dto.QuestionRequestDTO;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;

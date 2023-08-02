@@ -1,6 +1,6 @@
 package com.project.doduchat.service;
 
-import com.project.doduchat.dto.CategoryDTO;
+import com.project.doduchat.domain.dto.CategoryDTO;
 import com.project.doduchat.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

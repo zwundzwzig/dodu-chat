@@ -1,6 +1,6 @@
 package com.project.doduchat.controller;
 
-import com.project.doduchat.dto.*;
+import com.project.doduchat.domain.dto.*;
 import com.project.doduchat.service.ApplyService;
 import com.project.doduchat.service.ChatService;
 import com.project.doduchat.service.MatchingService;

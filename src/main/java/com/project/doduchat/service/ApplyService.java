@@ -2,8 +2,8 @@ package com.project.doduchat.service;
 
 import com.project.doduchat.domain.Apply;
 import com.project.doduchat.domain.Matching;
-import com.project.doduchat.dto.ApplyFormDTO;
-import com.project.doduchat.dto.ApplyResultDTO;
+import com.project.doduchat.domain.dto.ApplyFormDTO;
+import com.project.doduchat.domain.dto.ApplyResultDTO;
 import com.project.doduchat.repository.ApplyListRepository;
 import com.project.doduchat.repository.MatchingRepository;
 import lombok.RequiredArgsConstructor;

@@ -1,7 +1,7 @@
 package com.project.doduchat.controller;
 
-import com.project.doduchat.dto.ChatGptResponseDTO;
-import com.project.doduchat.dto.QuestionRequestDTO;
+import com.project.doduchat.domain.dto.ChatGptResponseDTO;
+import com.project.doduchat.domain.dto.QuestionRequestDTO;
 import com.project.doduchat.service.ChatGptService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

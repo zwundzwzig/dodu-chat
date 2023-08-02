@@ -1,7 +1,7 @@
 package com.project.doduchat.service;
 
 import com.project.doduchat.domain.Mentor;
-import com.project.doduchat.dto.*;
+import com.project.doduchat.domain.dto.*;
 import com.project.doduchat.repository.ApplyListRepository;
 import com.project.doduchat.repository.MentorRepository;
 import com.project.doduchat.repository.SaveApplyRepository;

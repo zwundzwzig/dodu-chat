@@ -1,7 +1,7 @@
 package com.project.doduchat.service;
 
 import com.project.doduchat.domain.Matching;
-import com.project.doduchat.dto.MatchingDTO;
+import com.project.doduchat.domain.dto.MatchingDTO;
 import com.project.doduchat.repository.MatchingRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;

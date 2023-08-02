@@ -1,7 +1,7 @@
 package com.project.doduchat.service;
 
 import com.project.doduchat.domain.Mentee;
-import com.project.doduchat.dto.MenteeDTO;
+import com.project.doduchat.domain.dto.MenteeDTO;
 import com.project.doduchat.repository.MenteeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
