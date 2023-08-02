@@ -1,6 +1,9 @@
 package com.project.doduchat.controller;
 
 import com.project.doduchat.domain.*;
+import com.project.doduchat.domain.dto.CategoryDTO;
+import com.project.doduchat.domain.dto.MentorDTO;
+import com.project.doduchat.domain.dto.VerificationDTO;
 import com.project.doduchat.dto.*;
 import com.project.doduchat.service.*;
 import com.project.doduchat.utils.SessionConst;

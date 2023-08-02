@@ -1,6 +1,6 @@
 package com.project.doduchat.handler;
 
-import com.project.doduchat.dto.ChatLogDTO;
+import com.project.doduchat.domain.dto.ChatLogDTO;
 import com.project.doduchat.service.ChatService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;

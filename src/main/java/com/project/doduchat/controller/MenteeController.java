@@ -1,7 +1,7 @@
 package com.project.doduchat.controller;
 
-import com.project.doduchat.dto.ApplyResultDTO;
-import com.project.doduchat.dto.MenteeDTO;
+import com.project.doduchat.domain.dto.ApplyResultDTO;
+import com.project.doduchat.domain.dto.MenteeDTO;
 import com.project.doduchat.service.ApplyService;
 import com.project.doduchat.service.MenteeService;
 import lombok.RequiredArgsConstructor;

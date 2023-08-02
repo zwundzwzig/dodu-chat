@@ -3,6 +3,7 @@ package com.project.doduchat.controller;
 import com.project.doduchat.config.auth.CustomOAuth2UserService;
 import com.project.doduchat.config.auth.LoginUser;
 import com.project.doduchat.config.auth.SessionUser;
+import com.project.doduchat.domain.dto.*;
 import com.project.doduchat.dto.*;
 import com.project.doduchat.service.*;
 import jakarta.servlet.http.HttpSession;

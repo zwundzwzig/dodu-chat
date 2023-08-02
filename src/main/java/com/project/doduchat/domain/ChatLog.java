@@ -1,6 +1,6 @@
 package com.project.doduchat.domain;
 
-import com.project.doduchat.dto.ChatLogDTO;
+import com.project.doduchat.domain.dto.ChatLogDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

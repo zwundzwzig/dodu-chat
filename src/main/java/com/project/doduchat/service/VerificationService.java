@@ -1,7 +1,7 @@
 package com.project.doduchat.service;
 
 import com.project.doduchat.domain.Verification;
-import com.project.doduchat.dto.VerificationDTO;
+import com.project.doduchat.domain.dto.VerificationDTO;
 import com.project.doduchat.repository.VerificationRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

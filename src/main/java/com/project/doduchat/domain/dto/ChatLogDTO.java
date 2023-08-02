@@ -1,4 +1,4 @@
-package com.project.doduchat.dto;
+package com.project.doduchat.domain.dto;
 
 import lombok.Data;
 
