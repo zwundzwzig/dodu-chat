@@ -25,6 +25,9 @@
 - 관리자 페이지에서 회원 관리
 - 채팅 기능 (ChatGPT 활용)
 
-### 3. 서비스 사이클
+### 3. ERD
+<img height="600px" src="https://yellow-band-92f.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd9c3881b-7c84-47cb-b239-c17e89ba1a56%2FUntitled.png?table=block&id=a172f109-d8b5-4c5f-a3aa-ff6496c8f1d1&spaceId=8a6e50f3-ff49-4170-871c-6637423388b5&width=1340&userId=&cache=v2">
+
+### 4. 서비스 사이클
 
 ![Slide 16_9 - 29](https://velog.velcdn.com/images/amoeba25/post/d3726376-067b-40e1-98ab-bddce9cdd5b0/image.png)
